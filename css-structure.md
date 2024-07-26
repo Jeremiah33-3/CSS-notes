@@ -2,6 +2,83 @@
 ### Selectors
 > A selector targets HTML to apply styles to content
 
+A selector list, combining the selectors, separated by comma:
+```css
+h1, .special {
+  color: blue;
+}
+```
+
+Types of selectors:
+- type selectors: target an HTML element such as <h1> `h1`, [universal selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors#type_selectors) *
+- Class selectors target an element that has a specific value for its class attribute `.class_selector`
+- ID selectors target an element that has a specific value for its id attribute `#unique`
+- attribute selectors: this group of selectors gives you different ways to select elements based on the presence of a certain attribute on an element
+- pseudo-classes  style certain states of an element `a:hover`
+- pseudo-elements select a certain part of an element rather than the element itself: `p::first-line`
+- combinators: combine other selectors in order to target elements within our documents: `article > p`
+
+Class selectors hacks:
+- target classes on particular elements:
+```css
+span.highlight {
+  background-color: yellow;
+}
+
+h1.highlight {
+  background-color: pink;
+}
+```
+- target elements with more than one classes applied:
+```html
+<div class="notebox">
+    This is an informational note.
+</div>
+
+<div class="notebox warning">
+    This note shows a warning.
+</div>
+
+<div class="notebox danger">
+    This note shows danger!
+</div>
+
+<div class="danger">
+    This won't get styled — it also needs to have the notebox class
+</div>
+```
+```css
+.notebox {
+  border: 4px solid #666;
+  padding: .5em;
+}
+
+.notebox.warning {
+  border-color: orange;
+  font-weight: bold;
+}
+
+.notebox.danger {
+  border-color: red;
+  font-weight: bold;
+}
+```
+
+ID selectors hacks:
+- Using the same ID multiple times in a document may appear to work for styling purposes, but don't do this. It results in invalid code, and will cause strange behavior in many places. (an ID can be used only once per page, and elements can only have a single id value applied to them)
+
+[Attribute selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors) hacks:
+- presence and value selectors:selection of an element based on the presence of an attribute alone (for example href), or on various different matches against the value of the attribute.
+  - `a[title]`
+  - equal: `a[href="https://example.com"]`
+  - exactly or contains a value: `p[class~="special"]`
+  - exactly value or begins with value immediately followed by a hyphen `div[lang|="zh"]`
+- substring matching selectors:
+  - Matches elements with an attribute, whose value begins with value. `li[class^="box-"]`
+  - Matches elements with an attr attribute whose value ends with value. `li[class$="-box"]`
+  - Matches elements with an attr attribute whose value contains value anywhere within the string. `li[class*="box"]`
+- use flag i `li[class^="a" i]` to achieve case-insensitivity
+
 Cascade Specificity - when two selectors select the same HTML element, CSS use rules to select the stronger selector
 - cascade rule says that the later style will override previous ones
 - between class and element, specificity says that class is more specific than element selector, so it override element selector's style
