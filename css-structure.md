@@ -10,7 +10,7 @@ h1, .special {
 ```
 
 Types of selectors:
-- type selectors: target an HTML element such as <h1> `h1`, [universal selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors#type_selectors) *
+- type selectors: target an HTML element such as `h1`, [universal selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Type_Class_and_ID_Selectors#type_selectors) *
 - Class selectors target an element that has a specific value for its class attribute `.class_selector`
 - ID selectors target an element that has a specific value for its id attribute `#unique`
 - attribute selectors: this group of selectors gives you different ways to select elements based on the presence of a certain attribute on an element
