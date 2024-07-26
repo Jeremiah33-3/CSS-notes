@@ -79,6 +79,14 @@ ID selectors hacks:
   - Matches elements with an attr attribute whose value contains value anywhere within the string. `li[class*="box"]`
 - use flag i `li[class^="a" i]` to achieve case-insensitivity
 
+Combinators note:
+- descendant combinator select all elements matched by the second selector `body article p`
+- child combinator (`>`) matches only those elements matched by the second selector that are the direct children of elements matched by the first. `article > p`
+- next-sibling combinator (`+`) matches only those elements matched by the second selector that are the next sibling element of the first selector. `p + img`
+- subsequent-sibling combinator (`~`) select siblings of an element even if they are not directly adjacent. `p ~ img`
+- css nesting modules can create complex combinators, tho idk why need this
+- but declaring too specific selectors with combinators will be hard to reuse the CSS rules since you have made the selector very specific to the location of that element in the markup.
+
 Cascade Specificity - when two selectors select the same HTML element, CSS use rules to select the stronger selector
 - cascade rule says that the later style will override previous ones
 - between class and element, specificity says that class is more specific than element selector, so it override element selector's style
