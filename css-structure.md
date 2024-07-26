@@ -88,9 +88,11 @@ Combinators note:
 - but declaring too specific selectors with combinators will be hard to reuse the CSS rules since you have made the selector very specific to the location of that element in the markup.
 
 Cascade Specificity - when two selectors select the same HTML element, CSS use rules to select the stronger selector
-- cascade rule says that the later style will override previous ones
-- between class and element, specificity says that class is more specific than element selector, so it override element selector's style
 - more info [here](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance)
+Rules:
+- cascade rule: when two rules from the same cascade layer apply and both have equal specificity, the one that is defined last in the stylesheet is the one that will be used.
+- specificity: between class and element, specificity says that class is more specific than element selector, so it override element selector's style
+- inheritance: some CSS property values set on parent elements are inherited by their child elements, and some aren't, the former is most likely due to a different style is applied directly to them (not speicificity, since they are different elements)
 
 ### Properties and values
 > Properties: These are human-readable identifiers that indicate which stylistic features you want to modify. For example, font-size, width, background-color. Values: Each property is assigned a value. This value indicates how to style the property.
