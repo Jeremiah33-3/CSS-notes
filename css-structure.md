@@ -94,6 +94,61 @@ Rules:
 - specificity: between class and element, specificity says that class is more specific than element selector, so it override element selector's style
 - inheritance: some CSS property values set on parent elements are inherited by their child elements, and some aren't, the former is most likely due to a different style is applied directly to them (not speicificity, since they are different elements)
 
+More intricacies concerning cascade, specificity, and inheritance:
+- controlling inheritance: some CSS property cannot be inherited, but CSS provides five special universal property __values__ for controlling inheritance (`inherit`, `unset`, `initial`, `revert`, `revert-layer`)
+- shorthand `all` __property__ applies one of these inheritance values to (almost) all properties at once
+- inheritance is the reason why nested elements appear to have the same property values as parent element, but there are some rules in which property values are applied: source order -> specificity -> importance
+- source order: more than one rule, all of which have exactly the same weight, then the one that comes last in the CSS will win.
+- when they have different weights, look at specificity: selectors with more weights
+- selector rule vs a singular property when thinking about specificity rule: "Something to note here is that although we are thinking about selectors and the rules that are applied to the text or component they select, it isn't the entire rule that is overwritten, only the properties that are declared in multiple places." E.g.
+```css
+/* the element selector here isn't entirely overidden */
+h2 {
+  font-size: 2em; /* font-size is overidden by the more specific class selector "small" */
+  color: #000; /* color is overidden by the more specific class selector bright */
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.small {
+  font-size: 1em;
+}
+
+.bright {
+  color: rebeccapurple;
+}
+```
+```html
+<h2>Heading with no class</h2>
+<h2 class="small">Heading with class of small</h2>
+<h2 class="bright">Heading with class of bright</h2>
+```
+- inline styles are more specific than anything else
+- !important flag after a property value will cause this property to override whatever that is before it, E.g.
+```css
+
+#winning {
+  background-color: red;
+  border: 1px solid black;
+}
+
+.better {
+  background-color: gray;
+  border: none !important; /* nothing will show for border */
+}
+
+p {
+  background-color: blue;
+  color: white;
+  padding: 5px;
+}
+```
+```html
+<p class="better">This is a paragraph.</p>
+<p class="better" id="winning">One selector to rule them all!</p>
+```
+
+### cascade layers
+
 ### Properties and values
 > Properties: These are human-readable identifiers that indicate which stylistic features you want to modify. For example, font-size, width, background-color. Values: Each property is assigned a value. This value indicates how to style the property.
 
