@@ -1,4 +1,33 @@
 ## terminologies and objects
+
+### [cascade and origin](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade#origin_types) -- the specificity issue prerequisite
+Cascade: algorithm that defines how user agents combine property values originating from different sources.
+- defines the origin and layer that takes precedence with declarations
+- core of CSS (the name suggests it)
+Rule of thumb: when a selector matches an element -> property value from the origin with the highest precedence gets applied (even if that of lower precedence has more specificity)
+
+origin types of css (the stylesheets)
+- user-agent stylesheet: default style sheets from browsers (as user-agents)
+- author style sheets: from web developers
+- user stylesheets: some websites, users can choose to override the styles using a custom user stylesheets (dark theme, accessibility...)
+
+cascading order:
+1. relevance
+2. origin and importance
+3. specificity
+4. scoping proximity
+5. order of appearance
+
+order of precedence by origin and importance for criteria 2:
+1. user-agent normal styles
+2. user normal styles
+3. author normal styles
+4. styles being animated (@keyframe animations)
+5. author important styles
+6. user important styles
+7. user-agent important styles
+8. styles being transitioned
+
 ### Selectors
 > A selector targets HTML to apply styles to content
 
